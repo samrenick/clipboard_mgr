@@ -14,8 +14,10 @@ struct ContentView: View {
     private var filtered: [ClipItem] {
         let base = query.isEmpty
             ? store.items
-            : store.items.filter { $0.text.localizedCaseInsensitiveContains(query) }
-        // Pinned entries float to the top, otherwise newest first.
+            : store.items.filter { item in
+                guard let text = item.text else { return false }
+                return text.localizedCaseInsensitiveContains(query)
+              }
         return base.sorted { ($0.pinned ? 1 : 0, $0.date) > ($1.pinned ? 1 : 0, $1.date) }
     }
 
@@ -172,38 +174,13 @@ private struct ClipRow: View {
 
     @State private var hovering = false
 
-    private var preview: String {
-        let firstLines = item.text
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-            .components(separatedBy: .newlines)
-            .prefix(2)
-            .joined(separator: " ⏎ ")
-        return String(firstLines.prefix(200))
-    }
-
     var body: some View {
         Button(action: onCopy) {
             HStack(alignment: .top, spacing: 8) {
-                VStack(alignment: .leading, spacing: 3) {
-                    Text(preview)
-                        .lineLimit(2)
-                        .font(.system(.body, design: item.text.contains("\n") ? .monospaced : .default))
-                        .multilineTextAlignment(.leading)
-                    HStack(spacing: 6) {
-                        if item.pinned {
-                            Image(systemName: "pin.fill")
-                                .font(.caption2)
-                                .foregroundStyle(.orange)
-                        }
-                        Text(item.date, format: .relative(presentation: .named))
-                            .font(.caption2)
-                            .foregroundStyle(.secondary)
-                        if item.text.count > 200 {
-                            Text("\(item.text.count) chars")
-                                .font(.caption2)
-                                .foregroundStyle(.tertiary)
-                        }
-                    }
+                if item.isImage {
+                    imageContent
+                } else {
+                    textContent
                 }
                 Spacer(minLength: 0)
                 if justCopied {
@@ -243,5 +220,58 @@ private struct ClipRow: View {
             Divider()
             Button("Delete", role: .destructive, action: onDelete)
         }
+    }
+
+    @ViewBuilder
+    private var textContent: some View {
+        let text = item.text ?? ""
+        VStack(alignment: .leading, spacing: 3) {
+            Text(textPreview(text))
+                .lineLimit(2)
+                .font(.system(.body, design: text.contains("\n") ? .monospaced : .default))
+                .multilineTextAlignment(.leading)
+            HStack(spacing: 6) {
+                if item.pinned {
+                    Image(systemName: "pin.fill").font(.caption2).foregroundStyle(.orange)
+                }
+                Text(item.date, format: .relative(presentation: .named))
+                    .font(.caption2).foregroundStyle(.secondary)
+                if text.count > 200 {
+                    Text("\(text.count) chars").font(.caption2).foregroundStyle(.tertiary)
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var imageContent: some View {
+        HStack(alignment: .center, spacing: 8) {
+            if let filename = item.imageFilename,
+               let nsImage = NSImage(contentsOf: ClipboardStore.shared.imagesDir.appendingPathComponent(filename)) {
+                Image(nsImage: nsImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 120, maxHeight: 72)
+                    .cornerRadius(4)
+            } else {
+                Image(systemName: "photo")
+                    .font(.title2)
+                    .foregroundStyle(.secondary)
+                    .frame(width: 60, height: 44)
+            }
+            VStack(alignment: .leading, spacing: 3) {
+                if item.pinned {
+                    Image(systemName: "pin.fill").font(.caption2).foregroundStyle(.orange)
+                }
+                Text(item.date, format: .relative(presentation: .named))
+                    .font(.caption2).foregroundStyle(.secondary)
+            }
+        }
+    }
+
+    private func textPreview(_ text: String) -> String {
+        let lines = text.trimmingCharacters(in: .whitespacesAndNewlines)
+            .components(separatedBy: .newlines).prefix(2).joined(separator: " ⏎ ")
+        return String(lines.prefix(200))
     }
 }
