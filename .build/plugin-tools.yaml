@@ -1,0 +1,66 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "ClipboardMgr-arm64-apple-macosx-release.exe": ["<ClipboardMgr-arm64-apple-macosx-release.exe>"]
+  "ClipboardMgr-arm64-apple-macosx-release.module": ["<ClipboardMgr-arm64-apple-macosx-release.module>"]
+  "PackageStructure": ["<PackageStructure>"]
+  "main": ["<ClipboardMgr-arm64-apple-macosx-release.exe>","<ClipboardMgr-arm64-apple-macosx-release.module>"]
+  "test": ["<ClipboardMgr-arm64-apple-macosx-release.exe>","<ClipboardMgr-arm64-apple-macosx-release.module>"]
+default: "main"
+nodes:
+  "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ClipboardMgrApp.swift","/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ClipboardStore.swift","/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ContentView.swift","/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/FloatingPanel.swift"]
+    outputs: ["/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/sources"]
+    description: "Write auxiliary file /Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/sources"
+
+  "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardMgrApp.swift.o","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardStore.swift.o","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ContentView.swift.o","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/FloatingPanel.swift.o"]
+    outputs: ["/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.product/Objects.LinkFileList"
+
+  "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/swift-version--58304C5D6DBC2206.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"]
+    outputs: ["/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/swift-version--58304C5D6DBC2206.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/swift-version--58304C5D6DBC2206.txt"
+
+  "<ClipboardMgr-arm64-apple-macosx-release.exe>":
+    tool: phony
+    inputs: ["/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr"]
+    outputs: ["<ClipboardMgr-arm64-apple-macosx-release.exe>"]
+
+  "<ClipboardMgr-arm64-apple-macosx-release.module>":
+    tool: phony
+    inputs: ["/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardMgrApp.swift.o","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardStore.swift.o","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ContentView.swift.o","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/FloatingPanel.swift.o","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/Modules/ClipboardMgr.swiftmodule"]
+    outputs: ["<ClipboardMgr-arm64-apple-macosx-release.module>"]
+
+  "C.ClipboardMgr-arm64-apple-macosx-release.exe":
+    tool: shell
+    inputs: ["/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardMgrApp.swift.o","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardStore.swift.o","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ContentView.swift.o","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/FloatingPanel.swift.o","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.product/Objects.LinkFileList"]
+    outputs: ["/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr"]
+    description: "Linking ./.build/arm64-apple-macosx/release/ClipboardMgr"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-L","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release","-o","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr","-module-name","ClipboardMgr","-Xlinker","-no_warn_duplicate_libraries","-emit-executable","-Xlinker","-dead_strip","-Xlinker","-alias","-Xlinker","_ClipboardMgr_main","-Xlinker","_main","-Xlinker","-rpath","-Xlinker","@loader_path","@/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-6.2/macosx","-target","arm64-apple-macosx14.0","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g"]
+
+  "C.ClipboardMgr-arm64-apple-macosx-release.module":
+    tool: shell
+    inputs: ["/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ClipboardMgrApp.swift","/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ClipboardStore.swift","/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ContentView.swift","/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/FloatingPanel.swift","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/swift-version--58304C5D6DBC2206.txt","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/sources"]
+    outputs: ["/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardMgrApp.swift.o","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardStore.swift.o","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ContentView.swift.o","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/FloatingPanel.swift.o","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/Modules/ClipboardMgr.swiftmodule"]
+    description: "Compiling Swift Module 'ClipboardMgr' (4 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","ClipboardMgr","-emit-dependencies","-emit-module","-emit-module-path","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/Modules/ClipboardMgr.swiftmodule","-output-file-map","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/output-file-map.json","-whole-module-optimization","-num-threads","8","-c","@/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/sources","-I","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/Modules","-target","arm64-apple-macosx14.0","-whole-module-optimization","-num-threads","8","-serialize-diagnostics","-O","-j8","-DSWIFT_PACKAGE","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ModuleCache","-parseable-output","-Xfrontend","-entry-point-function-name","-Xfrontend","ClipboardMgr_main","-swift-version","6","-plugin-path","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","clipboard_mgr"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/","/Users/samuelrenick/clipboard_mgr/Package.swift","/Users/samuelrenick/clipboard_mgr/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

@@ -1,0 +1,288 @@
+{
+  "builtTestProducts" : [
+
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.ClipboardMgr-arm64-apple-macosx-release.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/sources",
+      "importPath" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ClipboardMgrApp.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ClipboardStore.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ContentView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/FloatingPanel.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "ClipboardMgr",
+      "moduleOutputPath" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/Modules/ClipboardMgr.swiftmodule",
+      "objects" : [
+        "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardMgrApp.swift.o",
+        "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardStore.swift.o",
+        "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ContentView.swift.o",
+        "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/FloatingPanel.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx14.0",
+        "-whole-module-optimization",
+        "-num-threads",
+        "8",
+        "-serialize-diagnostics",
+        "-O",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "ClipboardMgr_main",
+        "-swift-version",
+        "6",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "clipboard_mgr"
+      ],
+      "outputFileMapPath" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardMgrApp.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardStore.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ContentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/FloatingPanel.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/Modules/ClipboardMgr.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ClipboardMgrApp.swift",
+        "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ClipboardStore.swift",
+        "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ContentView.swift",
+        "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/FloatingPanel.swift"
+      ],
+      "tempsPath" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build",
+      "wholeModuleOptimization" : true
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "ClipboardMgr" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "ClipboardMgr",
+      "-package-name",
+      "clipboard_mgr",
+      "-c",
+      "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ClipboardMgrApp.swift",
+      "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ClipboardStore.swift",
+      "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ContentView.swift",
+      "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/FloatingPanel.swift",
+      "-I",
+      "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/Modules",
+      "-target",
+      "arm64-apple-macosx14.0",
+      "-whole-module-optimization",
+      "-num-threads",
+      "8",
+      "-serialize-diagnostics",
+      "-O",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "ClipboardMgr_main",
+      "-swift-version",
+      "6",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "clipboard_mgr",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "ClipboardMgr" : [
+
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ClipboardMgrApp.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ClipboardStore.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ContentView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/FloatingPanel.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/sources"
+    },
+    "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardMgrApp.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardStore.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ContentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/FloatingPanel.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.product/Objects.LinkFileList"
+    },
+    "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/swift-version--58304C5D6DBC2206.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/swift-version--58304C5D6DBC2206.txt"
+    }
+  }
+}

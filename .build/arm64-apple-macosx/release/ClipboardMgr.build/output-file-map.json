@@ -1,0 +1,31 @@
+{
+  "": {
+    "dependencies": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardMgr.d",
+    "object": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardMgr.o",
+    "swift-dependencies": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/primary.swiftdeps"
+  },
+  "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ClipboardMgrApp.swift": {
+    "object": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardMgrApp.swift.o",
+    "swiftmodule": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardMgrApp~partial.swiftmodule",
+    "swift-dependencies": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardMgrApp.swiftdeps",
+    "diagnostics": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardMgrApp.dia"
+  },
+  "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ClipboardStore.swift": {
+    "object": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardStore.swift.o",
+    "swiftmodule": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardStore~partial.swiftmodule",
+    "swift-dependencies": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardStore.swiftdeps",
+    "diagnostics": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ClipboardStore.dia"
+  },
+  "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/ContentView.swift": {
+    "object": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ContentView.swift.o",
+    "swiftmodule": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ContentView~partial.swiftmodule",
+    "swift-dependencies": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ContentView.swiftdeps",
+    "diagnostics": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/ContentView.dia"
+  },
+  "/Users/samuelrenick/clipboard_mgr/Sources/ClipboardMgr/FloatingPanel.swift": {
+    "object": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/FloatingPanel.swift.o",
+    "swiftmodule": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/FloatingPanel~partial.swiftmodule",
+    "swift-dependencies": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/FloatingPanel.swiftdeps",
+    "diagnostics": "/Users/samuelrenick/clipboard_mgr/.build/arm64-apple-macosx/release/ClipboardMgr.build/FloatingPanel.dia"
+  }
+}
