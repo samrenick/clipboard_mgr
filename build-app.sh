@@ -1,5 +1,5 @@
 #!/bin/zsh
-# Builds ClipboardMgr.app into the project directory.
+# Builds ClipboardMgr.app and installs it to /Applications.
 set -euo pipefail
 cd "$(dirname "$0")"
 
@@ -30,6 +30,8 @@ cat > "$APP/Contents/Info.plist" <<'PLIST'
     <string>14.0</string>
     <key>LSUIElement</key>
     <true/>
+    <key>NSAccessibilityUsageDescription</key>
+    <string>ClipboardMgr uses accessibility to restore focus to the previously active text field after pasting.</string>
     <key>NSHumanReadableCopyright</key>
     <string></string>
 </dict>
@@ -37,4 +39,10 @@ cat > "$APP/Contents/Info.plist" <<'PLIST'
 PLIST
 
 codesign --force --sign - "$APP"
-echo "Built $APP — launch with: open $APP"
+
+# Install to /Applications so macOS TCC stores the Accessibility grant
+# against a stable path (ad-hoc signatures tied to ~/clipboard_mgr reset on rebuild).
+echo "Copying to /Applications (may prompt for password)…"
+cp -R "$APP" /Applications/
+
+echo "Done. Launch with: open /Applications/ClipboardMgr.app"

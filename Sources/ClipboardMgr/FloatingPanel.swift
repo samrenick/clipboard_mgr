@@ -25,7 +25,6 @@ final class FloatingPanel: NSPanel {
         self.contentView = contentView
     }
 
-    // Borderless windows refuse key status by default; we need it for typing.
     override var canBecomeKey: Bool { true }
 
     override func cancelOperation(_ sender: Any?) {
@@ -34,7 +33,6 @@ final class FloatingPanel: NSPanel {
 
     override func resignKey() {
         super.resignKey()
-        // Clicking anywhere else dismisses, like Spotlight.
         FloatingPanelController.shared.hide()
     }
 }
@@ -44,14 +42,35 @@ final class FloatingPanelController {
     static let shared = FloatingPanelController()
     private var panel: FloatingPanel?
 
+    /// The last app the user was in before opening the panel. Tracked via
+    /// NSWorkspace notifications so launchers (Quicksilver, Spotlight) that
+    /// briefly become frontmost at invocation time don't overwrite it.
+    var previousApp: NSRunningApplication?
+    private var observer: NSObjectProtocol?
+
+    init() {
+        observer = NSWorkspace.shared.notificationCenter.addObserver(
+            forName: NSWorkspace.didActivateApplicationNotification,
+            object: nil,
+            queue: .main
+        ) { note in
+            let app = note.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication
+            guard let app, app.bundleIdentifier != Bundle.main.bundleIdentifier else { return }
+            Task { @MainActor in
+                // Don't overwrite while the panel is open (launcher firing mid-session).
+                if FloatingPanelController.shared.panel == nil {
+                    FloatingPanelController.shared.previousApp = app
+                }
+            }
+        }
+    }
+
     func toggle() {
         if panel != nil { hide() } else { show() }
     }
 
     func show() {
         hide()
-        // A fresh panel each time gives fresh view state (empty query,
-        // search field focused via onAppear).
         let root = ContentView(
             store: .shared,
             isFloating: true,
@@ -65,7 +84,6 @@ final class FloatingPanelController {
             ?? NSScreen.main
         if let frame = screen?.visibleFrame {
             let size = panel.frame.size
-            // Centered horizontally, a bit above center vertically.
             panel.setFrameOrigin(NSPoint(
                 x: frame.midX - size.width / 2,
                 y: frame.midY - size.height / 2 + frame.height * 0.12
@@ -76,7 +94,7 @@ final class FloatingPanelController {
 
     func hide() {
         guard let panel else { return }
-        self.panel = nil  // clear first: orderOut triggers resignKey → hide()
+        self.panel = nil
         panel.orderOut(nil)
     }
 }

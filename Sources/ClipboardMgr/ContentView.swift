@@ -8,6 +8,7 @@ struct ContentView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var query = ""
     @State private var copiedID: ClipItem.ID?
+    @State private var accessibilityGranted = AXIsProcessTrusted()
     @FocusState private var searchFocused: Bool
 
     private var filtered: [ClipItem] {
@@ -114,6 +115,18 @@ struct ContentView: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
             Spacer()
+            if !accessibilityGranted {
+                Button {
+                    NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
+                } label: {
+                    Label("Enable auto-paste", systemImage: "exclamationmark.triangle.fill")
+                        .font(.caption)
+                        .foregroundStyle(.orange)
+                }
+                .buttonStyle(.plain)
+                .help("Accessibility permission needed to paste automatically — click to open System Settings")
+                .onAppear { accessibilityGranted = AXIsProcessTrusted() }
+            }
             Button("Clear") { store.clearUnpinned() }
                 .help("Remove all unpinned items")
             Button("Quit") { NSApp.terminate(nil) }
@@ -125,11 +138,13 @@ struct ContentView: View {
     private func copy(_ item: ClipItem) {
         store.copyToPasteboard(item)
         copiedID = item.id
-        // Brief "Copied" flash, then close the panel.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             copiedID = nil
             query = ""
             close()
+            if isFloating {
+                PasteHelper.paste(into: FloatingPanelController.shared.previousApp)
+            }
         }
     }
 }
